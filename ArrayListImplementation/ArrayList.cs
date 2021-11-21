@@ -197,6 +197,18 @@ namespace ArrayListImplementation
                 currentElement = dummyObject;
                 index = -1;
             }
+
+        }
+        public virtual void RemoveAt(int index)
+        {
+            if (index < 0 || index >= _size) throw new ArgumentOutOfRangeException();
+            _size--;
+            if (index < _size)
+            {
+                Array.Copy(_items, index + 1, _items, index, _size - index);
+            }
+            _items[_size] = null;
+            _version++;
         }
 
     }
